@@ -1,0 +1,39 @@
+import React, { useState } from "react";
+
+function Quiz() {
+  const [showMessage, setShowMessage] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionClick = (option) => {
+    if (option === "correct") {
+      setShowMessage(true);
+    }
+    setSelectedOption(option);
+  };
+
+  return (
+    <div>
+      <h1>Multiple Choice Quiz</h1>
+      <p>Select the correct answer:</p>
+      <ul>
+        <li onClick={() => handleOptionClick("option1")}>
+          Option 1
+        </li>
+        <li onClick={() => handleOptionClick("option2")}>
+          Option 2
+        </li>
+        <li onClick={() => handleOptionClick("correct")}>
+          Option 3 (correct answer)
+        </li>
+        <li onClick={() => handleOptionClick("option4")}>
+          Option 4
+        </li>
+      </ul>
+      {showMessage && selectedOption === "correct" && (
+        <p>Congratulations! You chose the correct answer.</p>
+      )}
+    </div>
+  );
+}
+
+export default Quiz;
